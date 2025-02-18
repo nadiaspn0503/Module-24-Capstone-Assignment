@@ -27,14 +27,12 @@ Use pandas to read in the datasets `ratings.csv` and `books.csv`and assign to a 
 
 Examine the data description below, and determine if any of the features are missing values or need to be coerced to a different data type.
 
-```
 Input variables:
 # Goodreads Book Graph Data:
 1 - User-ID : Gives anonymity to each Goodreads user. With the User-ID one can search through the user_id_map.csv dataset to find the users' Goodreads user_id. (numeric)
 2 - Book-ID : Allows each book to be identifiable while also keeping the data numeric and simple for modeling. With the Book-ID one can search through the book_id_map.csv dataset to find the books' Goodreads user_id. One can also search the books.csv for the specific title of the book and information about it. (numeric)
 Output variable (desired target):
 21 - Rating - How much does the member like the book? (numeric: 1-5 with 5 being the highest appreciation)
-```
 
 - There are no missing values or duplicate columns in the ratings.csv dataset. The books.csv dataset did have missing values but no duplicate values. The missing values/rows in the books.csv dataset have been dropped and the index has been reset.
 
@@ -42,7 +40,9 @@ Output variable (desired target):
 
 Examine the data and perform EDA to identify patterns in the data.
 
-- During this time, some data analysis was reformed to identify some features that are likely to affect the target outcome to help with modeling and predicting. Through a histogram visualizing the job column of the dataset, it can be seen that there are various jobs that have a higher rate of choosing to subscribe to the term deposit. These jobs include admin, technician, and more.
+- During this time, some data analysis was reformed to identify some features that are likely to affect the target outcome to help with modeling and predicting. The books that were reviewed are organized based on rating frequency. It should be noted that this does not include how well each book is rated. This only ranks the books based on the number of ratings they each recieved. The tope fifty most frequently rated books are specifically listed in the jupyter notebook. The top five most frequently rated books include The Hunger Games, Harry Potter and the Sorcerer's Stone, Twilight, To Kill a Mockingbird, and the Great Gatspy respectively. The frequency of how much a book is rated affects the recommendation system. This is because trending books tend to be highly recommended even recieve high ratings due to popularity.
+
+- The users were organized based on how frequently they are listed in the data. The top 50 reviwers are listed. These users will contribute the most to recommendation system as they review the most books. The mean of the top 50 most frequent users was calculated as 194.32. On average, the top 50 most frequent users read and reviewed 194.32 boks each. These users will affect the recommendation system the most as frequent users are altering the average rating and popularity of many books more often compared to users that read and review less often.
 
 ![Number of accepted subscriptions by job](https://github.com/user-attachments/assets/73aa7e9f-159c-436d-8704-6d56e18b2c8f)
 
