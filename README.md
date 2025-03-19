@@ -109,7 +109,7 @@ Compare multiple hybrid models (content and collaborative-based recommendation s
 
 - The fourth hybrid recommendation system is a cascade recommendation system. This model took 8.6091 seconds to train. The precision score is 0.5454. The recall score is 0.5478.
 
-- The fifth hybrid recommendation system is a feature recommendation system. This model took 6.0842 seconds to train. The precision score is 0.0010. The recall score is 0.0050. 
+- The fifth hybrid recommendation system is a feature recommendation system. This model took 39.0962 seconds to train. The precision score is 0.0040. The recall score is 0.0008. The extremely low precision and recall scores are due to a lack of diversity in the HNSW content-based recommendations. To increase diversity the hyperparameters ef_construction and M can be increased. However, the more they are increased, the more computationally expensive the model becomes.
 
 ### Findings
 
