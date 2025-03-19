@@ -89,14 +89,14 @@ Compare multiple content-based models and find the best performing one to use fo
 
 - The second content-based recommendation system is an ANNOY index. This model took 65.3006 seconds to train. The precision score is 0.0019. The recall score is 0.0093. With a significantly longer training time than the other content-based models and extremely low precision and recall scores, this model performed poorly. The precision score was even worse than the precision score for the baseline model.
 
-- The third content-based recommendation system is an HNSW model. This model took 14.9855 seconds to train. The precision score is 0.5439. The recall score is 0.5454. Although this model took longer to train and has slightly lower precision and recall scores than the random forests recommendation system, the HNSW model's precision and recall scores are more balanced with each other. Therefore, this is the content-based model that will be used for the hybrid recommendation system.
+- The third content-based recommendation system is an HNSW model. This model took 14.7510 seconds to train. The precision score is 0.5236. The recall score is 0.5244. Although this model took longer to train and has slightly lower precision and recall scores than the random forests recommendation system, the HNSW model's precision and recall scores are more balanced with each other. Therefore, this is the content-based model that will be used for the hybrid recommendation system.
 
 ### Problem 10: Collaborative-Based Recommendation Systems
 Compare multiple collaborative-based models and find the best performing one to use for the hybrid recommendation system.
 
 - Five collaborative-based recommendation systems are trained and evaluated together. It should be noted that these models were trained on a 5,000 row sample of the original training set as using the entire training set to train all five models at once was too computationally expensive. These models include KNNBasic, SVD, NMF, CoClustering, and SlopeOne. KNNBasic has a training time of 1.0304 seconds, a mean precision score of 0.7733, and a mean recall score of 0.2838. SVD has a training time of 0.5304 seconds, a mean precision score of 0.8197, and a mean recall score of 0.3033. NMF has a training time of 3.4157 seconds, a mean precision score of 0.7954, and a mean recall score of 0.2928. CoClustering has a training time of 3.4655 seconds, a mean precision score of 0.8100, and a mean recall score of 0.2988. SlopeOne has a training time of 0.0000 seconds, a mean precision score of 0.8185, and a mean recall score of 0.3029. SVD was considered the optimal algorithm. However, SlopeOne has the next best mean precision and mean recall scores. SlopeOne also has no parameters to tune and has a short training time. In comparison to SVD, SlopeOne is also easier to implement and less computationally expensive. Therefore, the SlopeOne model will be used for the hybrid recommendation system.
 
-- It should be noted that the SlopeOne model was redone on its own to provide ease when creating and comparing the hybrid recommendation systems. It was also redone on the entire training set rather than just a sample. When it comes to the SlopeOne model on the entire training set, the only change is in its training time which increased to 65.3842 seconds. The precision and recall scores stayed the same.
+- It should be noted that the SlopeOne model was redone on its own to provide ease when creating and comparing the hybrid recommendation systems. It was also redone on the entire training set rather than just a sample. When it comes to the SlopeOne model on the entire training set, the only change is in its training time which increased to 61.5599 seconds. The precision and recall scores stayed the same.
 
 ### Problem 11: Hybrid Recommendation Systems
 Compare multiple hybrid models (content and collaborative-based recommendation systems) and find the best performing one for Goodreads to use. I will use the HNSW content-based model and the SlopeOne collaborative-based model.
@@ -109,7 +109,9 @@ Compare multiple hybrid models (content and collaborative-based recommendation s
 
 - The fourth hybrid recommendation system is a cascade recommendation system. This model took 8.6091 seconds to train. The precision score is 0.5454. The recall score is 0.5478.
 
-- The fifth hybrid recommendation system is a feature recommendation system. This model took 39.0962 seconds to train. The precision score is 0.0040. The recall score is 0.0008. The extremely low precision and recall scores are due to a lack of diversity in the HNSW content-based recommendations. To increase diversity the hyperparameters ef_construction and M can be increased. However, the more they are increased, the more computationally expensive the model becomes.
+- The fifth hybrid recommendation system is a feature recommendation system. This model took 5.9364 seconds to train. The precision score is 0.0004. The recall score is 0.0020. The extremely low precision and recall scores are due to a lack of diversity in the HNSW content-based recommendations. To increase diversity the hyperparameters ef_construction and M can be increased. However, the more they are increased, the more computationally expensive the model becomes.
+
+- Training times come from a full run of the entire notebook. When I went back and reran the training cells the training times decreased significantly. However, for the sake of uniformity, the original training times are listed.
 
 ### Findings
 
