@@ -66,21 +66,25 @@ After examining the description and data, your goal now is to clearly state the 
 
 Now that you understand your business objective, we will build a basic model to get started.  Before we can do this, we must work to encode the data. Using just the ratings.csv information features, prepare the features and target column for modeling with appropriate encoding and transformations.
 
-- Considering all columns of the ratings.csv dataset (the dataset that will be used for modeling) are integers, no encoding is required. Although not all columns in the books.csv dataset are integers, this dataset is only meant for EDA not modeling. Therefore, the books.csv dataset does not require encoding.
+- The title and authors columns of the books dataset is merged into the ratings dataset. This is so that an item profile is built for each book. This will be especially useful for the content-based model. Then the authors and title columns are encoded with label encoding as the data must be numerical to utilize in the models.
 
 ### Problem 7: Train/Test Split
 
 With your data prepared, split it into a train and test set.
 
-- The data was split with the test size being 20%, leaving 80% of the data for training. The features that will be used for basic modeling are all the ones available in the ratings.csv dataset including the 'user_id' and 'book_id' features. The rating column is the target column which lists how much the user likes the book on a scale of 1 to 5.
+- The data was split with the test size being 20%, leaving 80% of the data for training. The features that will be used for basic modeling are all the ones available in the rated_books dataset including the 'user_id', 'book_id', 'authors_encoded', and 'title_encoded' features. The rating column is the target column which lists how much the user likes the book on a scale of 1 to 5.
 
 ### Problem 8: A Baseline Model
 
 Before we build our first model, we want to establish a baseline.  What is the baseline performance that our classifier should aim to beat?
 
-- A population-based recommendation system model was used as the baseline. This model took about 0.0319 seconds to train. The mean absolute error (mae) and mean squared error (mse) were calculated to evaluate the model. The mae score of the population-based recommendation system model is about 0.8376. The mse score of the population-based recommendation system model is about 1.1101. This is the baseline performance that we should aim to beat.
+- A population-based recommendation system model was used as the baseline. This model took about 0.0384 seconds to train. The precision and recall scores were calculated to evaluate the model. The precision score of the population-based recommendation system model is about 0.0038. The recall score of the population-based recommendation system model is about 0.0038. This is the baseline performance that we should aim to beat.
 
-- It should be noted that mae and mse were used as evaluation metrics as they are good for recommendation systems. The mse prioritizes getting recommendations right while also focusing on overall accuracy. This is important for a recommendation system as both the individual user data and overall data must be considered. However, mse mainly penalizes large errors/outliers. Mae focuses on minimizing the overall average error. This is important in this case as this dataset has a bias toward popular books; therefore, large errors are uncommon. Therefore, mae will hold more weight than mse in this specific example. 
+- It should be noted that precision and recall were used as evaluation metrics as they are good for recommendation systems. Both metrics evaluate the effectiveness of the recommendation system and the relevance of items. Precision focuses on the user and idetifies the proportion of recommendations that are relevant to them. This ensures that users do not receive recommendations that they will dislike. Recall identifies the proportion of relevant items the user actually sees. This ensures that the user isn't missing on on recommendations that they would like. A balance of both precison and recall is prefered. However, if a balnce cannot be acheived, a high precision, low recall is preferred as it ensures that the recommendations are relevant. High recall with low precision would mean that the user is recieveing a lot of irrelevant recommendations.
+
+### Problem 9: Content-Based Recommendation Systems
+
+- My first content-based recocmmendation system is a random forest classifier. This model took 9.9568 seconds to train. The precision score is 0.5769. The recall score is 0.6889.
 
 ### Findings
 
